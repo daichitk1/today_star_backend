@@ -17,6 +17,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_014814) do
   create_table "daily_reflections", force: :cascade do |t|
     t.string "comment"
     t.integer "rating"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,6 +3,7 @@ class CreateDailyReflections < ActiveRecord::Migration[8.0]
     create_table :daily_reflections do |t|
       t.string :comment
       t.integer :rating
+      t.string :email
       t.timestamps
     end
   end
