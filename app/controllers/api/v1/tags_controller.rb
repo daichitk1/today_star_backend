@@ -48,7 +48,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def tag_params
-          params.expect(tag: [ :name ])
+          params.require(:tag).permit(:name)
         end
     end
   end

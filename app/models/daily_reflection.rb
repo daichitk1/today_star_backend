@@ -1,0 +1,2 @@
+class DailyReflection < ApplicationRecord
+end
