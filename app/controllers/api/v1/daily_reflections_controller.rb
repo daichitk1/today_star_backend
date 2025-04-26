@@ -47,7 +47,7 @@ module Api
 
             # Only allow a list of trusted parameters through.
             def daily_reflection_params
-                params.require(:daily_reflection).permit(:comment,rating)
+                params.require(:daily_reflection).permit(:comment,:rating)
             end
         end
     end
