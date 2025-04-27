@@ -46,7 +46,7 @@ module Api
 
         private
             # Use callbacks to share common setup or constraints between actions.
-            def set_DailyReflection
+            def set_daily_reflection
                 @daily_reflection = DailyReflection.find(params.expect(:id))
             end
 
