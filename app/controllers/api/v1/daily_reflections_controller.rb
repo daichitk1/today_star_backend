@@ -6,7 +6,7 @@ module Api
         
         # GET /DailyReflections
         def index
-            @daily_reflections = DailyReflection.all
+            @daily_reflections = DailyReflection.where(email: params[:email])
             
 
             render json: @daily_reflections
@@ -20,7 +20,7 @@ module Api
         # POST /DailyReflections
         def create
             @daily_reflection = DailyReflection.new(daily_reflection_params)
-            if DailyReflection.where("updated_at>=?", Date.today).length == 0 && @daily_reflection.save
+            if DailyReflection.where(updated_at: Time.zone.today.all_day).where(email: params[:email]).length == 0 && @daily_reflection.save
                 render json: @daily_reflection, status: :created
             end
         end
@@ -40,7 +40,8 @@ module Api
         end
 
         def today_reflection
-            @today_reflection =  DailyReflection.where("updated_at>=?", Date.today)
+
+            @today_reflection =  DailyReflection.where(updated_at: Time.zone.today.all_day).where(email: params[:email])
             render json: @today_reflection
         end
 
