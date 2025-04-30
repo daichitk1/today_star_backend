@@ -3,11 +3,11 @@ module Api
     module V1
         class DailyReflectionsController < ApplicationController
         before_action :set_daily_reflection, only: %i[ show update destroy ]
-        
+
         # GET /DailyReflections
         def index
-            @daily_reflections = DailyReflection.where(email: params[:email])
-            
+            @daily_reflections = DailyReflection.where(email: params[:email]).order(created_at: :desc)
+
 
             render json: @daily_reflections
         end
@@ -20,7 +20,7 @@ module Api
         # POST /DailyReflections
         def create
             @daily_reflection = DailyReflection.new(daily_reflection_params)
-            if DailyReflection.where(updated_at: Time.zone.today.all_day).where(email: params[:email]).length == 0 && @daily_reflection.save
+            if DailyReflection.where(created_at: Time.zone.today.all_day).where(email: params[:email]).length == 0 && @daily_reflection.save
                 render json: @daily_reflection, status: :created
             end
         end
@@ -41,7 +41,7 @@ module Api
 
         def today_reflection
 
-            @today_reflection =  DailyReflection.where(updated_at: Time.zone.today.all_day).where(email: params[:email])
+            @today_reflection =  DailyReflection.where(created_at: Time.zone.today.all_day).where(email: params[:email])
             render json: @today_reflection
         end
 
