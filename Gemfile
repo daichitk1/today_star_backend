@@ -20,7 +20,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "solid_queue"
 gem "solid_cable"
 gem 'rack-cors'
-
+gem "solid_cache"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
