@@ -79,6 +79,3 @@ test:
 #
 production:
   url: <%= ENV['DATABASE_URL'] %>
-  database: today_star_backend_production
-  username: today_star_backend
-  password: <%= ENV["TODAY_STAR_BACKEND_DATABASE_PASSWORD"] %>
